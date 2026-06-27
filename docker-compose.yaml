@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # Point the BigQuery client at the mounted service-account key,
+      # or remove this and rely on Application Default Credentials.
+      - GOOGLE_APPLICATION_CREDENTIALS=/secrets/gcloud.json
+      
+    volumes:
+      # Mount a GCP service-account key for the BigQuery client (read-only).
+      # Comment this out if you use ADC / workload identity instead.
+      - ./gcloud.json:/secrets/gcloud.json:ro
+    restart: unless-stopped
