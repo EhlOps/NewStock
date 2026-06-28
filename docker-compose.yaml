@@ -6,6 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - DEV=true
       # Point the BigQuery client at the mounted service-account key,
       # or remove this and rely on Application Default Credentials.
       - GOOGLE_APPLICATION_CREDENTIALS=/secrets/gcloud.json

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from bigquery import sim_query
+from ingestion.bigquery import sim_query
 
 app = FastAPI()
 
